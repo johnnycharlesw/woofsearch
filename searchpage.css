@@ -1,0 +1,30 @@
+header.search-results-page {
+  display: flex;
+  vertical-align: center;
+}
+
+ul.search-results {
+  list-style-type: decimal;
+}
+
+ul.search-results > li.search-result {
+  padding: 10px;
+}
+
+ul.search-results > li.search-result > a {
+  text-decoration: none;
+  color: black;
+  user-select: none;
+  background-color: rgba(141, 138, 138, 0.3);
+}
+
+ul.search-results > li.search-result > a > span.result-link {
+  font-weight: bold;
+}
+
+img.logo-image.search-results-page {
+  width: 64px;
+  height: auto;
+}
+
+/*# sourceMappingURL=searchpage.css.map */

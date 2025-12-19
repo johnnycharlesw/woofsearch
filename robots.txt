@@ -1,0 +1,23 @@
+User-agent: *
+Disallow: /login.php
+Disallow: /admin/
+Disallow: /private/
+Disallow: /error/
+Disallow: /fx-branding/
+Disallow: /401.php
+Disallow: /402.php
+Disallow: /403.php
+Disallow: /404.php
+Disallow: /451.php
+Disallow: /500.php
+Disallow: /search
+Disallow: /node_modules
+Disallow: /adminneo
+Disallow: /Inter-4.1
+Disallow: /.htaccess
+Disallow: /.user.ini
+
+User-agent:Googlebot
+User-agent:AdsBot-Google
+Disallow: /
+Allow: /index.php

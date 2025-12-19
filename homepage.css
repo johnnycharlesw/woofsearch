@@ -1,0 +1,24 @@
+div.homepage.container {
+  text-align: center;
+  margin: auto;
+}
+
+div.homepage.container > div.search-box {
+  vertical-align: middle;
+  line-break: strict;
+  padding: auto;
+  padding-top: 20%;
+  display: inline-flex;
+}
+
+div.homepage {
+  user-select: none;
+}
+
+img.logo-image.homepage {
+  width: 256px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+/*# sourceMappingURL=homepage.css.map */

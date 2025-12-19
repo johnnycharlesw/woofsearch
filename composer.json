@@ -1,0 +1,18 @@
+{
+    "name": "johnnycharlesw-github/woofsearch",
+    "description": "WoofSearch - The Free and Open Source Search Engine",
+    "autoload": {
+        "psr-4": {
+            "WoofSearch\\": "includes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "John Charles Woods",
+            "email": "woods.johnny.charles@gmail.com"
+        }
+    ],
+    "require": {
+
+    }
+}

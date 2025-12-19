@@ -1,0 +1,25 @@
+div.browser-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+div.browser-popup > div.title-and-close-btn > button.popup-close-btn {
+    background-color: red;
+    color:white;
+    user-select: none;
+}
+div.browser-popup > div.title-and-close-btn {
+    display:inline-flex;
+}
+
+div.browser-popup > div.title-and-close-btn > h4 > img {
+    width: 64px;
+    height:auto;
+}
