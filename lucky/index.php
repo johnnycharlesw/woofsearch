@@ -1,18 +1,22 @@
 <?php
+namespace WoofSearch;
 // lucky/index.php
+$documentRoot = $_SERVER['DOCUMENT_ROOT'];
+include $documentRoot . '/init.php';
+
 function handleLuckyButton() {
-    $documentRoot = $_SERVER['DOCUMENT_ROOT'];
-    include $documentRoot . '/init.php';
+    global $luckyButtonDisabled;
+
     if ($luckyButtonDisabled) {
         http_response_code(403);
         return;
     }
-    $searches = [
-        "surprise1",
-        "surprise2",
-        "surprise3",
-        // Add more searches as desired.
-    ];
+    $searches=[];
+    $engine = new SearchEngine();
+    $pages = $engine->getPages();
+    foreach ($pages as $page) {
+        $searches[] = $page['title'];
+    }
     $randomIndex = array_rand($searches);
     http_response_code(301);
     header("Location: /search/?q=" . $searches[$randomIndex]);

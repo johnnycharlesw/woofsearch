@@ -12,6 +12,8 @@ $page = $_GET['p'] ?? 0;
     <title>Search results for <?= $search ?> - WoofSearch</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/searchpage.css">
+    <link rel="shortcut icon" href="/woofsearch_logo.png" type="image/png">
+    <link rel="search" type="application/opensearchdescription+xml" title="WoofSearch" href="/opensearch.xml">
 </head>
 <body>
     <div class="container search-results-page">
@@ -27,21 +29,18 @@ $page = $_GET['p'] ?? 0;
         <h1>Search results for "<?= $search ?>", page <?= $page ?></h1>
         <ul class="search-results">
             <?php
-            // Placeholder results for now, will be fixed later
-            $results = [
-                [
-                    'location' => "https://example.com",
-                    'text' => "Example Domain",
-                ],
-                [
-                    'location' => "https://example.org",
-                    'text' => "Example Domain",
-                ],
-                [
-                    'location' => "https://example.net",
-                    'text' => "Example Domain",
-                ],
-            ];
+            # Start up the actual search backend and get results
+            use WoofSearch\SearchEngine;
+            $engine=new SearchEngine();
+            $tokens = $engine->parseQueryWithOperators($search);
+            $results_=$engine->multiTokenSearch($tokens, $page-1);
+            $results = [];
+            foreach ($results_ as $result) {
+                $results[] = [
+                    'location' => $result['url'],
+                    'text' => $result['content']
+                ];
+            }
             // Render the results
             foreach ($results as $result) {
                 $location=$result['location'];

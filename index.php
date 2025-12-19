@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/homepage.css">
     <link rel="shortcut icon" href="/woofsearch_logo.png" type="image/png">
+    <link rel="search" type="application/opensearchdescription+xml" title="WoofSearch" href="/opensearch.xml">
 </head>
 <body>
     <div class="container homepage">

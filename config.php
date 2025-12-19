@@ -12,3 +12,4 @@ $dbUser="woofsearch";
 $dbPassword="RuffRuffRuff311K!";
 $dbHost="localhost";
 $dbName="woofsearch";
+$dbType="mariadb";

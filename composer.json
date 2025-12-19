@@ -3,7 +3,8 @@
     "description": "WoofSearch - The Free and Open Source Search Engine",
     "autoload": {
         "psr-4": {
-            "WoofSearch\\": "includes/"
+            "WoofSearch\\": "includes/",
+            "PHPizza\\Database\\": "includes/database/"
         }
     },
     "authors": [

@@ -8,3 +8,10 @@ CREATE TABLE `pages` (
 
 ALTER TABLE `pages`
 ADD `url` varchar(255) COLLATE 'utf8mb4_unicode_ci' NOT NULL;
+
+CREATE TABLE `tf_cache` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `pageid` int NOT NULL,
+  `term` varchar(255) NOT NULL,
+  `tf` DOUBLE PRECISION NOT NULL
+);
