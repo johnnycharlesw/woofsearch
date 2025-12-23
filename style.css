@@ -43,25 +43,208 @@ footer {
   line-height: 60px;
 }
 
-.btn {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px 20px;
-  background-color: #f8f8f8;
+.btn, button, input[type=button], input[type=submit] {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 12.5%;
+  background-color: lightgrey;
   color: black;
-  text-decoration: none;
-  font-size: 16px;
+  border-color: transparent;
+  padding: 10px;
+  margin: 10px;
+  width: fit-content;
+  height: fit-content;
+  display: inline-block;
   user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-size: inherit;
 }
 
-.btn:hover {
-  background-color: #e8e8e8;
+.btn:hover, button:hover, input[type=button]:hover, input[type=submit]:hover {
+  background-color: rgb(185.5, 185.5, 185.5);
+}
+
+.btn:focus, button:focus {
+  background-color: lightgrey;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+::root {
+  color: CanvasText;
+  view-transition-name: root;
+}
+
+/* HTML elements that should be hidden by default */
+base,
+basefont,
+datalist,
+head,
+link,
+title,
+meta,
+param,
+rp,
+script,
+style,
+template {
+  display: none;
+}
+
+/* Elements that were shown if features were not supported in the browser, where all modern browsers support said feature */
+noembed,
+noframes,
+noscript {
+  display: none;
+}
+
+/* Isolate unicode-bidi where appropriate */
+address,
+aside,
+article,
+blockquote,
+caption,
+center,
+col,
+colgroup,
+details,
+dd,
+dir,
+div,
+dl,
+dt,
+fieldset,
+figcaption,
+figure,
+footer,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+header,
+hgroup,
+hr,
+html,
+legend,
+li,
+listing,
+main,
+menu,
+nav,
+noframes,
+ol,
+p,
+plaintext,
+pre,
+section,
+summary,
+table,
+tbody,
+tr,
+td,
+th,
+thread,
+ul,
+xmp {
+  unicode-bidi: isolate;
+}
+
+ul, ol {
+  list-style-position: inside;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+li {
+  display: list-item;
+  margin-bottom: 2px;
+}
+
+li::marker {
+  list-style-type: none;
+  width: 5px;
+}
+
+a:blank {
+  color: black;
+  text-decoration: none;
+}
+
+a:link, a:visited {
+  color: blue;
+  text-decoration-color: blue;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-thickness: 1px;
+  text-decoration-skip: none;
+  text-decoration-skip-ink: none;
   cursor: pointer;
 }
 
-.btn[disabled] {
-  background-color: #e5e5e5;
-  cursor: not-allowed;
+a:link:hover {
+  color: lightskyblue;
+  text-decoration-color: lightskyblue;
+}
+
+a:visited {
+  color: purple;
+  text-decoration-color: purple;
+}
+
+a:visited:hover {
+  color: violet;
+  text-decoration-color: violet;
+}
+
+body {
+  font-family: "Inter", "Roboto", sans-serif;
+  background-color: white;
+  color: black;
+  user-select: none;
+  -webkit-user-select: none;
+  display: block;
+}
+
+body > * {
+  user-select: auto;
+  -webkit-user-select: none;
+}
+
+label, p.label {
+  display: inline-block;
+  margin-bottom: 0px;
+  user-select: contain;
+  -webkit-user-select: contain;
+  cursor: default;
+  color: inherit;
+  background-color: inherit;
+}
+
+div.fieldset, fieldset {
+  display: block;
+  border-width: 1px;
+  border-style: groove;
+  border-color: #ccc;
+  padding: auto;
+  margin: 10px;
+  margin-inline: 2px;
+  padding-block: 0.35em 0.65em;
+  min-inline-size: min-content;
+}
+
+p.legend, legend {
+  padding-bottom: 0px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 input.textbox {

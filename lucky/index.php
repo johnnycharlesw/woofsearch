@@ -19,7 +19,12 @@ function handleLuckyButton() {
     }
     $randomIndex = array_rand($searches);
     http_response_code(301);
-    header("Location: /search/?q=" . $searches[$randomIndex]);
+    if ($_GET['puppySearch'] ?? false) {
+        $location="/puppysearch/search";
+    } else {
+        $location="/search";
+    }
+    header("Location: $location/?q=" . $searches[$randomIndex]);
 }
 handleLuckyButton();
 ?>

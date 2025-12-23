@@ -29,6 +29,7 @@ class WoofSearchBot:
         # ----- Firefox setup -----
         self.driver_path = os.path.join(os.path.dirname(__file__), "geckodriver")
         self.options = Options()
+        self.options.add_argument("--headless")
         self.options.profile=self.profile
         self.options.set_preference("general.useragent.override", "WoofSearchBot/0.0.3 (Firefox-loving edition)")
         self.driver = webdriver.Firefox(
@@ -97,6 +98,20 @@ class WoofSearchBot:
             )
             self.db.commit()
         except Exception as e:
+            msg = str(e)
+
+            if msg == "Server has gone away":
+                # Reconnect and try again
+                self.cursor.close()
+                self.db.close()
+                self.db=mariadb.connect(
+                    user=mariadb_conf.user,
+                    password=mariadb_conf.password,
+                    host=mariadb_conf.host,
+                    database=mariadb_conf.database
+                )
+                self.cursor=self.db.cursor()
+                save_page(url)
             print(f"⚠️ DB insert failed for {url}: {e}")
 
     def extract_links(self, base_url):

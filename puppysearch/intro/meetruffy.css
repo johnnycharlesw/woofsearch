@@ -1,0 +1,26 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+div.ruffy {
+  position: absolute;
+  width: 128px;
+  height: 128px;
+  user-select: none;
+  transform: translate(256px, 256px);
+}
+div.ruffy > .speechbubble {
+  position: absolute;
+  transform: translate(-200px, -200px);
+  font-family: Inter, sans-serif;
+  border-radius: 25%;
+  background: white;
+  color: black;
+}
+div.ruffy > img {
+  width: 100%;
+  height: 100%;
+}
+
+/*# sourceMappingURL=meetruffy.css.map */

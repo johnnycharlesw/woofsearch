@@ -15,3 +15,9 @@ CREATE TABLE `tf_cache` (
   `term` varchar(255) NOT NULL,
   `tf` DOUBLE PRECISION NOT NULL
 );
+
+CREATE TABLE `bangs` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `bang` varchar(255) NOT NULL,
+  `weburl` varchar(255) NOT NULL
+);

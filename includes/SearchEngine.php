@@ -84,7 +84,7 @@ SQL;
         return $tokenized;
     }
 
-    public function tf(string $t, array $d){
+    public function _tf(string $t, array $d){
         # Get word count of $t in $d
         $wordcount = $this->count_number_of_word_in_string($t, $d['content']);
         # Get the number of words in $d
@@ -96,6 +96,19 @@ SQL;
         }
         $tf = $wordcount / $doc_wordcount;
         return $tf;
+    }
+
+    public function tf(string $t, array $d){
+        # Check if the TF was already cached
+        $cached = $this->db->fetchAll("SELECT * FROM tf_cache WHERE pageid=? AND term=?", [$d['id'], $t], "is");
+        if ($cached == []) {
+            $tf = $this->_tf($t, $d);
+            $this->db->execute("INSERT INTO tf_cache (pageid, term, tf) VALUES (?, ?, ?)", [$d['id'], $t, $tf]);
+            return $tf;
+        } else {
+            $tf=$cached[0]['tf'];
+            return $tf;
+        }
     }
 
     public function count_number_of_word_in_string(string $word, string $string) {
@@ -137,7 +150,7 @@ SQL;
     }
 
     public function getPages(){
-        return $this->db->fetchAll("SELECT * from pages");
+        return $this->db->fetchAll("SELECT * from pages LIMIT 250");
     }
 
     public function tfIdf(string $t, array $d){
@@ -160,6 +173,7 @@ SQL;
                 $score -= $tfIdf + 1000;
             }
         }
+        $page['score']=$score;
         return $score;
     }
 
@@ -168,14 +182,16 @@ SQL;
         foreach ($tokens as $token) {
             $score += $this->singleTokenSearch($token, $page);
         }
+        $page['score'] = $score;
         return $score;
     }
 
     public function multiTokenSearch(array $tokens, int $page_id){
         $crawled_pages = $this->getPages();
-        foreach ($crawled_pages as $page) {
+        foreach ($crawled_pages as &$page) {
             $page['score'] = $this->_multiTokenSearch($tokens, $page);
         }
+        unset($page);
         usort($crawled_pages, function ($a, $b){
             return $b['score'] <=> $a['score'];
         });

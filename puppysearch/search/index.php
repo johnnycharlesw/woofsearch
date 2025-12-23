@@ -1,6 +1,7 @@
 <?php 
 $documentRoot = $_SERVER['DOCUMENT_ROOT'];
 include $documentRoot . '/init.php';
+include '../puppySearchInit.php';
 $search = $_GET['q'];
 $page = $_GET['p'] ?? 1;
 ?>
@@ -18,7 +19,7 @@ $page = $_GET['p'] ?? 1;
 <body>
     <div class="container search-results-page">
         <header class="search-results-page">
-            <a href="/">
+            <a href="/puppysearch">
                 <img src="/woofsearch_logo.png" alt="WoofSearch Logo" class="logo-image search-results-page">
             </a>
             <form action="/search" method="get" class="search-form">
@@ -29,7 +30,7 @@ $page = $_GET['p'] ?? 1;
         <h1>Search results for "<?= $search ?>", page <?= $page ?></h1>
         <ul class="search-results">
             <?php
-            include 'lib.php';
+            include '../../search/lib.php';
             renderResults();
             ?>
         </ul>

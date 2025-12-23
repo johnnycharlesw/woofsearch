@@ -1,0 +1,21 @@
+@mixin character($name, $x, $y) {
+    div.#{$name} {
+        position: absolute;
+        width:128px;
+        height:128px;
+        user-select: none;
+        transform: translate($x, $y);
+        > .speechbubble {
+            position: absolute;
+            transform: translate(-200px, -200px);
+            font-family: Inter, sans-serif;
+            border-radius: 25%;
+            background: white;
+            color: black;
+        }
+        > img {
+            width:100%;
+            height:100%;
+        }
+    }
+}

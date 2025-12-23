@@ -1,3 +1,7 @@
+<?php
+$documentRoot = $_SERVER['DOCUMENT_ROOT'];
+include $documentRoot . '/init.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +22,6 @@
         </header>
         <div class="search-box">
             <?php 
-            $documentRoot = $_SERVER['DOCUMENT_ROOT'];
-            include $documentRoot . '/init.php';
             $ua = $_SERVER['HTTP_USER_AGENT'];
             if (!preg_match('/Firefox/i', $ua)) {
                 echo <<<HTML

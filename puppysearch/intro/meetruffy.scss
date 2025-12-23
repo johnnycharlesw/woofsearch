@@ -1,0 +1,7 @@
+@import './scene.scss';
+body {
+    background-color: black;
+    color:white;
+}
+
+@include character("ruffy", 256px, 256px);
